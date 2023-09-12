@@ -1,15 +1,12 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { SequelizeModule } from '@nestjs/sequelize'
-import { BooksController } from './books/books.controller'
 import { BooksModule } from './books/books.module'
-import { BooksService } from './books/books.service'
 import { Book } from './books/models/book.model'
 
 @Module({
 	imports: [
-		BooksModule,
-		ConfigModule.forRoot({ isGlobal: true }),
+		ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
 		SequelizeModule.forRoot({
 			dialect: 'postgres',
 			host: 'localhost',
@@ -20,8 +17,9 @@ import { Book } from './books/models/book.model'
 			models: [Book],
 			autoLoadModels: true,
 		}),
+		BooksModule,
 	],
-	controllers: [BooksController],
-	providers: [BooksService],
+	controllers: [],
+	providers: [],
 })
 export class AppModule {}
