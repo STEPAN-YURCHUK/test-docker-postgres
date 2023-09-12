@@ -11,4 +11,9 @@ export class BooksService {
 		const book = await this.bookRepository.create(dto)
 		return book
 	}
+
+	async getAll() {
+		const book = await this.bookRepository.findAll()
+		return book
+	}
 }

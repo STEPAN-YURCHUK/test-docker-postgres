@@ -9,7 +9,7 @@ import { Book } from './books/models/book.model'
 		ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
 		SequelizeModule.forRoot({
 			dialect: 'postgres',
-			host: 'localhost',
+			host: 'db',
 			port: 5432,
 			username: 'root',
 			password: 'root',
